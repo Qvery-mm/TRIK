@@ -33,7 +33,7 @@ class Robot():
  
   
   def __init_(self):
-    brick.setCalibrationValues([-33, -26, -64, -121, 135, 4026])
+    brick.setCalibrationValues([-30, -26, -67, -76, 180, 4025])
 #    pass
     
     
@@ -126,9 +126,10 @@ class Robot():
     self.left_motor_off()
     self.right_motor_off()
   
-  def run_using_gyroscope(self, v, s):
+  def run_using_gyroscope(self, gyroCallback, v, s):
     limit = s / self.__wheel_length * self.__calls_per_rotate
-    initial = brick.gyroscope().read()[-1]
+    #initial = brick.gyroscope().read()[-1]
+    initial = gyroCallback()
     script.wait(10)
     
     self.left_motor_on(v)
@@ -136,8 +137,9 @@ class Robot():
     
     brick.encoder(self.__left_encoder).reset() 
     while abs(brick.encoder(self.__left_encoder).read()) < limit:
-      current_angle = brick.gyroscope().read()[-1]
-      d_angle = (current_angle - initial) / 1000 / 5
+#      current_angle = brick.gyroscope().read()[-1]
+      current_angle = gyroCallback()
+      d_angle = (current_angle - initial)
       
       self.left_motor_on(v - d_angle)
       self.right_motor_on(v + d_angle)
@@ -152,41 +154,55 @@ class Robot():
 
 class Program():
   __interpretation_started_timestamp__ = time.time() * 1000
+  __initial_angle = 0
+  __last_angle = 0
+  __n = 0
   
-  initial_angle = brick.gyroscope().read()[-1]
-  last_angle = initial_angle
-  n = 0
-
-  def angle_val():
-    current_angle = brick.gyroscope().read()[-1]
-    if 90000 < last_angle and last_angle < 180000 and current_angle > -180000 and current_angle < -90000:
-      n += 1
-    elif 90000 < current_angle and current_angle < 180000 and last_angle > -180000 and last_angle < -90000:
-      n -= 1
-    last_angle = current_angle
-
-  def print_angle_val():
-    current_angle = brick.gyroscope().read()[-1]
-    current_angle /= 1000
-    current_angle += n * 360
-    print(last_angle)
-
   def __init__(self):
     self.robot = Robot()
+    __initial_angle = brick.gyroscope().read()[-1] / 1000
+    __last_angle = __initial_angle
+
+  def angle_val(self):
+    current_angle = brick.gyroscope().read()[-1]
+    current_angle /= 1000
+    if abs(current_angle) > 170 and current_angle * self.__last_angle < 0:
+      self.__n += 1 if self.__last_angle > current_angle else -1
+    
+    """if 90000 < self.__last_angle and self.__last_angle < 180000 and current_angle > -180000 and current_angle < -90000:
+      self.__n += 1
+    elif 90000 < current_angle and current_angle < 180000 and self.__last_angle > -180000 and self.__last_angle < -90000:
+      self.__n -= 1"""
+    self.__last_angle = current_angle
+
+  def print_angle_val(self):
+    current_angle = self.__last_angle
+    current_angle += self.__n * 360
+    print(current_angle)
+
+  def get_angle_val(self):
+    current_angle = self.__last_angle
+    current_angle += self.__n * 360
+    return current_angle
+
+    
     
   def execMain(self):
-#    brick.gyroscope().calibrate(60000)
+    brick.gyroscope().calibrate(5000)
+    script.wait(5000)
+    print(brick.gyroscope().getCalibrationValues())
+    
+    tim = script.timer(10);
+    tim.timeout.connect(self.angle_val)
+    
+    tim_print = script.timer(500);
+    tim_print.timeout.connect(self.print_angle_val);
+    
+    self.robot.run_using_gyroscope(self.get_angle_val, 90, 500)
 #    script.wait(60000)
-#    print(brick.gyroscope().getCalibrationValues())
     
-    self.robot.run_using_gyroscope(90, 500)
-    
-    #tim = script.timer(100);
-    #tim.timeout.connect(angle_val)
-    
-#    tim_print = script.timer(500);
-#    tim_print.timeout.connect(print_angle_val);
-
+    tim.stop()
+    tim_print.stop()
 
     brick.stop()
     return
