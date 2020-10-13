@@ -21,6 +21,6 @@ Repository for my homework on Theoretical Cybernetics at St-Petersburg state Uni
   
   *Note that *.qrs files are storing at google drive.
 
-- ### Problem 
+- ### Problem 1.3.3
 
   Solution files: ```test\go_to_point.py```
