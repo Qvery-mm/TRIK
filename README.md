@@ -24,3 +24,7 @@ Repository for my homework on Theoretical Cybernetics at St-Petersburg state Uni
 - ### Problem 1.3.3
 
   Solution files: ```test\go_to_point.py```
+  
+  ### Problem 1.6
+  
+  Solution files: ```ARtag.py``` (new)
