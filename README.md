@@ -27,4 +27,4 @@ Repository for my homework on Theoretical Cybernetics at St-Petersburg state Uni
   
 - ### Problem 1.6  :black_square_button:
   
-  Solution files: ```ARtag.py``` (new)
+  Solution files: ```ARtag.py```
