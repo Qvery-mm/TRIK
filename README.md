@@ -19,7 +19,7 @@ Repository for my homework on Theoretical Cybernetics at St-Petersburg state Uni
 
   Solution files: ```1.2.3-4.py, 1.2.3-4.qrs```*
   
-  *Note that *.qrs files are storing at google drive.
+  * *.qrs files can be found in google drive.
 
 - ### Problem 1.3.3 :white_check_mark:
 
