@@ -25,6 +25,10 @@ Repository for my homework on Theoretical Cybernetics at St-Petersburg state Uni
 
   Solution files: ```test\go_to_point.py```
   
-- ### Problem 1.6  :black_square_button:
+- ### Problem 1.5 :white_check_mark:
+
+  Solution files: ```filters.py, plots.xlsx```
+  
+- ### Problem 1.6  :white_check_mark:
   
   Solution files: ```ARtag.py```
