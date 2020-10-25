@@ -12,14 +12,14 @@ Repository for my homework on Theoretical Cybernetics at St-Petersburg state Uni
 
 - ### Problem 1.2.3 :white_check_mark:
 
-  Solution files: ```1.2.3-4.py, 1.2.3-4.qrs```*
+  Solution files: ```1.2.3-4.py, 1.2.3-4.qrs```
   
   
 - ### Problem 1.2.4 :white_check_mark:
 
   Solution files: ```1.2.3-4.py, 1.2.3-4.qrs```*
   
-  * *.qrs files can be found in google drive.
+  *.qrs files can be found in google drive.
 
 - ### Problem 1.3.3 :white_check_mark:
 
