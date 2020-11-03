@@ -28,6 +28,10 @@ Repository for my homework on Theoretical Cybernetics at St-Petersburg state Uni
 
   Solution files: ```localization_1d.py```  
   
+- ### Problem 1.4.2 :black_square_button:
+
+  Solution files: ```localization_2d.py```    
+  
 - ### Problem 1.5 :white_check_mark:
 
   Solution files: ```filters.py, plots.xlsx```
