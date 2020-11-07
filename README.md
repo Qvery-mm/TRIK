@@ -24,11 +24,11 @@ Repository for my homework on Theoretical Cybernetics at St-Petersburg state Uni
 
   Solution files: ```test\go_to_point.py```
   
-- ### Problem 1.4.1 :black_square_button:
+- ### Problem 1.4.1 :white_check_mark:
 
   Solution files: ```localization_1d.py```  
   
-- ### Problem 1.4.2 :black_square_button:
+- ### Problem 1.4.2 :white_check_mark:
 
   Solution files: ```localization_2d.py```    
   
